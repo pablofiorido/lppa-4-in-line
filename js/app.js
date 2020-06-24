@@ -26,7 +26,7 @@ var checkGameStatus2 = function () {
   console.log(board.length)
   for (var i = 0; i < board.length; i++) {
     for (var j = 0; j < 6; j++) {
-      if (board[i][j] != null && board[i][j] != board[6][0]) {
+      if (board[i][j] != null && board[i][j] != board[6][j]) {
         if (board[i][j] == board[i][j + 1] && board[i][j] == board[i][j + 2]
           && board[i][j] == board[i][j + 3] || board[i][j] == board[i + 1][j]
           && board[i][j] == board[i + 2][j] && board[i][j] == board[i + 3][j]
@@ -35,13 +35,27 @@ var checkGameStatus2 = function () {
           console.log('game ended')
         }
       }
+      // if (board[i][j] != null && board[i][j] == board[6][j]) {
+      //console.log("entra al check 6 j")
+      //if (board[i][j] == board[i][j + 1] && board[i][j] == board[i][j + 2]
+      //  && board[i][j] == board[i][j + 3] || board[i][j] == board[i - 1][j]
+      //  && board[i][j] == board[i - 2][j] && board[i][j] == board[i - 3][j]
+      //  || board[i][j] == board[i - 1][j + 1] && board[i][j] == board[i - 2][j + 2]
+      //  && board[i][j] == board[i - 3][j + 3]) {
+      //  console.log("game ended in pos i = 6, j = j")
+      // }
+      // }
     }
   }
 }
 
+
+//check las diagonales inversas:
+// board[i][j] == board[i - 1][j + 1] && board[i][j] == board[i - 2][j + 2] && board[i][j] == board[i - 3][j + 3]
+
+
 //arreglar lo de la ultima columna posicion i= 6 j=0, 1, 2, ...
 
-//|| board[i][j] == board[i - 1][j + 1] && board[i][j] == board[i - 2][j + 2] && board[i][j] == board[i - 3][j + 3]
 
 var columnEventHandler = function (evt) {
   var columnId = evt.target.id.substr(1, 1)
